@@ -413,13 +413,13 @@ function DetailsSection() {
               <div className="w-14 h-14 rounded-full bg-[#C9A86C]/10 flex items-center justify-center mx-auto mb-4">
                 <Heart className="w-6 h-6 text-[#C9A86C]" />
               </div>
-              <h3 className="font-serif text-xl text-[#2C2C2C] mb-4">Padrinos</h3>
-              <p className="text-[#4A4A4A]">
-                <span className="font-medium">{EVENT_DATA.godparents.godmother}</span>
+              <h3 className="text-xl text-[#2C2C2C] mb-4">Padrinos</h3>
+              <p className="text-[#4A4A4A] font-medium">
+                {EVENT_DATA.godparents.godmother}
               </p>
-              <p className="text-[#C9A86C] text-xl my-2" style={{ fontFamily: "var(--font-script)" }}>&</p>
-              <p className="text-[#4A4A4A]">
-                <span className="font-medium">{EVENT_DATA.godparents.godfather}</span>
+              <p className="text-[#C9A86C] text-lg leading-tight" style={{ fontFamily: "var(--font-script)" }}>&</p>
+              <p className="text-[#4A4A4A] font-medium">
+                {EVENT_DATA.godparents.godfather}
               </p>
             </div>
           </FadeInWhenVisible>

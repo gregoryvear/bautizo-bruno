@@ -13,18 +13,8 @@ interface JesusWithBabyProps {
  * Inspirada en arte devocional moderno
  */
 export function JesusWithBaby({ className = "", animated = true }: JesusWithBabyProps) {
-  const Wrapper = animated ? motion.div : "div";
-  const wrapperProps = animated
-    ? {
-        initial: { opacity: 0, scale: 0.95 },
-        animate: { opacity: 1, scale: 1 },
-        transition: { duration: 1.2, ease: "easeOut" },
-      }
-    : {};
-
-  return (
-    <Wrapper {...wrapperProps} className={className}>
-      <svg
+  const svgContent = (
+    <svg
         viewBox="0 0 400 500"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -354,7 +344,25 @@ export function JesusWithBaby({ className = "", animated = true }: JesusWithBaby
           opacity="0.25"
         />
       </svg>
-    </Wrapper>
+  );
+
+  if (animated) {
+    return (
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
+        className={className}
+      >
+        {svgContent}
+      </motion.div>
+    );
+  }
+
+  return (
+    <div className={className}>
+      {svgContent}
+    </div>
   );
 }
 
