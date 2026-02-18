@@ -1,26 +1,263 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BAUTISMO BRUNO - Paleta "Minimal Celestial"
+   Blanco cremoso + Dorado suave + Azul cielo sutil
+═══════════════════════════════════════════════════════════════════════════ */
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-inter);
+  --font-script: var(--font-script);
+  
+  /* Colores personalizados para el bautismo */
+  --color-cream: #FDFBF7;
+  --color-cream-dark: #F5F0E8;
+  --color-gold: #C9A86C;
+  --color-gold-light: #D4BC8E;
+  --color-gold-dark: #A68B4B;
+  --color-sky: #E8F1F8;
+  --color-sky-dark: #C5D9E8;
+  --color-charcoal: #2C2C2C;
+  --color-charcoal-light: #4A4A4A;
+  --color-warm-gray: #8B8680;
+  
+  /* Radius y espaciado */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  
+  /* Shadcn mappings */
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --radius: 0.625rem;
+  
+  /* Base - Crema cálido */
+  --background: #FDFBF7;
+  --foreground: #2C2C2C;
+  
+  /* Cards */
+  --card: #FFFFFF;
+  --card-foreground: #2C2C2C;
+  
+  /* Popover */
+  --popover: #FFFFFF;
+  --popover-foreground: #2C2C2C;
+  
+  /* Primary - Dorado */
+  --primary: #C9A86C;
+  --primary-foreground: #FFFFFF;
+  
+  /* Secondary - Crema oscuro */
+  --secondary: #F5F0E8;
+  --secondary-foreground: #2C2C2C;
+  
+  /* Muted - Gris cálido */
+  --muted: #F5F0E8;
+  --muted-foreground: #8B8680;
+  
+  /* Accent - Azul cielo */
+  --accent: #E8F1F8;
+  --accent-foreground: #2C2C2C;
+  
+  /* Borders */
+  --border: #E8E4DC;
+  --input: #E8E4DC;
+  --ring: #C9A86C;
+  
+  /* Destructive */
+  --destructive: #DC2626;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "kern" 1, "liga" 1;
+  }
+  
+  /* Tipografía refinada */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-tight;
+    text-wrap: balance;
+  }
+  
+  p {
+    text-wrap: pretty;
+  }
+  
+  /* Selección elegante */
+  ::selection {
+    background-color: #C9A86C;
+    color: white;
+  }
+  
+  /* Focus visible accesible */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary;
+  }
+  
+  /* Scroll suave respetando preferencias */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ═══════════════════════════════════════════════════════════════════════════
+   ANIMACIONES SUTILES
+═══════════════════════════════════════════════════════════════════════════ */
+
+@layer utilities {
+  /* Fade in suave */
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  .animate-fade-in-delay-1 {
+    animation: fadeIn 0.8s ease-out 0.1s forwards;
+    opacity: 0;
+  }
+  
+  .animate-fade-in-delay-2 {
+    animation: fadeIn 0.8s ease-out 0.2s forwards;
+    opacity: 0;
+  }
+  
+  .animate-fade-in-delay-3 {
+    animation: fadeIn 0.8s ease-out 0.3s forwards;
+    opacity: 0;
+  }
+  
+  /* Línea decorativa animada */
+  .animate-line-grow {
+    animation: lineGrow 1s ease-out 0.5s forwards;
+    transform: scaleX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes lineGrow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Respetar prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ELEMENTOS DECORATIVOS
+═══════════════════════════════════════════════════════════════════════════ */
+
+/* Cruz minimalista */
+.cross-ornament {
+  position: relative;
+  display: inline-block;
+  width: 24px;
+  height: 32px;
+}
+
+.cross-ornament::before,
+.cross-ornament::after {
+  content: '';
+  position: absolute;
+  background-color: #C9A86C;
+}
+
+.cross-ornament::before {
+  /* Vertical */
+  width: 2px;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.cross-ornament::after {
+  /* Horizontal */
+  width: 60%;
+  height: 2px;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Línea decorativa dorada */
+.golden-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #C9A86C, transparent);
+}
+
+/* Patrón de fondo sutil */
+.pattern-dots {
+  background-image: radial-gradient(#C9A86C 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.1;
 }
